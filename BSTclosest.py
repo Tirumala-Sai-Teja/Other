@@ -16,19 +16,44 @@ def insert(root,val):
         return root
 def findClosestValueInBst(root,target):
     return fclosestHelper(root,target,float('inf'))
-
 def fclosestHelper(root,target,closest):
-    while root is not None:
-        new=root.value
-        if abs(target-closest)>abs(target-new):
-            closest=new
-        if target<new:
-            root=root.left
-        elif target>new:
-            root=root.right
+    if root is None:
+        return closest
+    if abs(target-closest)>abs(target-root.value):
+        closest=root.value
+    if target<root.value:
+        return fclosestHelper(root.left,target,closest)
+    elif target>root.value:
+        return fclosestHelper(root.right,target,closest)
+    else:
+        return closest
+        #this function takes O(log(N)) andO(N) time and space in AVG and WORST
+def fclosestHelper(root,target,closest):
+    new=root
+    while new is not None:
+        if abs(target-closest)>abs(target-new.value):
+            closest=new.value
+        if target<new.value:
+            new=new.left
+        elif target>new.value:
+            new=new.right
         else:
             break
     return closest
+def findClosestValueInBst(tree, target):
+    return findClosestValueInBstHelper(tree, target, float("inf"))
+def findClosestValueInBstHelper(tree, target, closest):
+    currentNode = tree
+    while currentNode is not None:
+        if abs(target - closest) > abs(target - currentNode.value):
+            closest = currentNode.value
+        if target < currentNode.value:
+            currentNode = currentNode.left
+        elif target > currentNode.value:
+            currentNode = currentNode.right
+        else: break
+    return closest
+
 r=node(10)
 insert(r,5)
 insert(r,2)
