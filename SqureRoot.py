@@ -15,3 +15,11 @@ while(l<=r):
     elif s*s<n:
         l=s
  '''using this program we will get square root of not perfect square numbers also----------O(logn base2)------------ '''
+n=int(input())
+for i in range(2,n//2+1):
+  if n//i==i:
+    print(i)
+    break
+else:
+  print('not perfect square number')
+  
