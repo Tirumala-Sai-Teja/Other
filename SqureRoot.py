@@ -23,3 +23,4 @@ for i in range(2,n//2+1):
 else:
   print('not perfect square number')
   
+''' using this we cannot find the square root for not perfect square numbers-----------O(n)-----------------'''
